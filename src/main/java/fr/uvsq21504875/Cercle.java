@@ -30,4 +30,16 @@ public class Cercle implements Forme{
     AfficheForme a=new AfficheForme();
     a.affiche(this.toString());
   }
+
+  public String getNom() {
+    return nom;
+  }
+
+  public Point getCentre() {
+    return centre;
+  }
+
+  public double getRayon() {
+    return rayon;
+  }
 }
