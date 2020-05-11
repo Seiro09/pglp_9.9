@@ -7,25 +7,31 @@ import static org.junit.Assert.*;
 public class CommandeCercleTest {
   @Test
   public void execute() throws Exception {
-    CompositeForme cf = new CompositeForme("cf1");
-    CommandeCercle commandeCercle = new CommandeCercle(new String[]{"c4", "50", "50", "64"},cf);
+    Interpreteur i = new Interpreteur();
+    i.setParametersT(new String[]{"c4", "50", "50", "64"});
+    CommandeCercle commandeCercle = new CommandeCercle(i);
     commandeCercle.execute();
-    cf.print();
+    CommandePrint commandePrint = new CommandePrint(i);
+    commandePrint.execute();
   }
 
   @Test
   public void execute2() throws Exception{
-    CompositeForme cf = new CompositeForme("cf1");
-    CommandeCercle commandeCercle = new CommandeCercle(new String[]{"c4", "50", "64"},cf);
+    Interpreteur i = new Interpreteur();
+    i.setParametersT(new String[]{"c4", "50", "64"});
+    CommandeCercle commandeCercle = new CommandeCercle(i);
     commandeCercle.execute();
-    cf.print();
+    CommandePrint commandePrint = new CommandePrint(i);
+    commandePrint.execute();
   }
 
   @Test
   public void execute3() throws Exception{
-    CompositeForme cf = new CompositeForme("cf1");
-    CommandeCercle commandeCercle = new CommandeCercle(new String[]{"c4", "50", "50", "a"},cf);
+    Interpreteur i = new Interpreteur();
+    i.setParametersT(new String[]{"c4", "50", "64", "a"});
+    CommandeCercle commandeCercle = new CommandeCercle(i);
     commandeCercle.execute();
-    cf.print();
+    CommandePrint commandePrint = new CommandePrint(i);
+    commandePrint.execute();
   }
 }

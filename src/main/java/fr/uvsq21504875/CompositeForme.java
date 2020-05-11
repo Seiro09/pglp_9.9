@@ -1,6 +1,7 @@
 package fr.uvsq21504875;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class CompositeForme implements Forme{
@@ -15,8 +16,12 @@ public class CompositeForme implements Forme{
     children.add(f);
   }
 
-  public void remove(Forme f){ children.remove(f);
+  public void remove(Forme f){ children.remove(f); }
+
+  public Iterator<Forme> getChildrens(){
+    return children.iterator();
   }
+
 
   public void move(int x, int y){
     for (Forme f : children){
@@ -28,5 +33,10 @@ public class CompositeForme implements Forme{
     for (Forme f : children){
       f.print();
     }
+  }
+
+  @Override
+  public String getNom() {
+    return nom;
   }
 }
