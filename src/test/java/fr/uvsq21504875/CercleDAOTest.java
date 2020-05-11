@@ -25,12 +25,12 @@ public class CercleDAOTest {
 
   @Test
   public void update() throws Exception {
-    Cercle c1 = new Cercle("c1",100,100,10);
-    c1.move(15,15);
     DAO<Cercle> D = new CercleDAO();
-    assertSame(c1,D.update(c1));
+    Cercle c1=D.find("c1");
+    c1.move(15,15);
+    D.update(c1);
     AfficheForme a = new AfficheForme();
-    a.affiche(c1.toString());
+    a.affiche(D.find("c1").toString());
   }
 
   @Test

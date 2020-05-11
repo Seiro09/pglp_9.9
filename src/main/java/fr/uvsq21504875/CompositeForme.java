@@ -4,7 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CompositeForme implements Forme{
-  public List<Forme> children = new ArrayList<>();
+  public String nom;
+  protected List<Forme> children = new ArrayList<>();
+
+  public CompositeForme(String nom){
+    this.nom=nom;
+  }
 
   public void add(Forme f){
     children.add(f);
