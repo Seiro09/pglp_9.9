@@ -16,14 +16,18 @@ public class CommandeQuit implements Commande {
     a.affiche("Sauvegarder ?");
     String reponseUtilisateur;
     Scanner sc;
-    do {
+    while (true) {
       sc = new Scanner(System.in);
       reponseUtilisateur= sc.nextLine();
-    }while (!(reponseUtilisateur.equals("Yes"))||!(reponseUtilisateur.equals("No")));
-    if (reponseUtilisateur.equals("Yes")) {
-      CommandeSave commandeSave = new CommandeSave(interpreteur);
-      commandeSave.execute();
+      if (reponseUtilisateur.compareTo("Oui")==0) {
+        CommandeSave commandeSave = new CommandeSave(interpreteur);
+        commandeSave.execute();
+        System.exit(17);
+      }
+      if (reponseUtilisateur.compareTo("Non")==0){
+        System.exit(18);
+      }
     }
-    System.exit(12);
+
   }
 }

@@ -1,5 +1,7 @@
 package fr.uvsq21504875;
 
+import java.util.Scanner;
+
 /**
  * Hello world!
  *
@@ -10,8 +12,10 @@ public enum DrawingApp
 
     private void run(){
         DrawingTUI drawingTUI = new DrawingTUI();
+        Scanner sc;
         while(true){
-            Commande commande = drawingTUI.nextCommande();
+            sc = new Scanner(System.in);
+            Commande commande = drawingTUI.nextCommande(sc.nextLine());
             commande.execute();
         }
 
