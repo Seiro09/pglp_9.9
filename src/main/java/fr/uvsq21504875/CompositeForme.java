@@ -18,11 +18,6 @@ public class CompositeForme implements Forme{
 
   public void remove(Forme f){ children.remove(f); }
 
-  public Iterator<Forme> getChildrens(){
-    return children.iterator();
-  }
-
-
   public void move(int x, int y){
     for (Forme f : children){
       f.move(x,y);

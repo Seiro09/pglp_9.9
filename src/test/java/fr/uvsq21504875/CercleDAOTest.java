@@ -3,10 +3,19 @@ package fr.uvsq21504875;
 import org.junit.Test;
 
 import java.security.cert.CertPathChecker;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
 public class CercleDAOTest {
+  @Test
+  public void findAll() throws Exception {
+    List<Cercle> ls = new ArrayList<>();
+    ls.addAll(DAOFactory.getCercleDAO().findAll());
+    System.out.println(ls);
+  }
+
   @Test
   public void create() throws Exception {
     Cercle c2 = new Cercle("c2",200,200,10);

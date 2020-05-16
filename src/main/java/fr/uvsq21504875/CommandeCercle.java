@@ -2,9 +2,6 @@ package fr.uvsq21504875;
 
 import java.util.ArrayList;
 
-/**
- *
- */
 public class CommandeCercle implements Commande{
   private Interpreteur inter;
   public CommandeCercle(Interpreteur interpreteur){

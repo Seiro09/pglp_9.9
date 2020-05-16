@@ -6,8 +6,6 @@ public class DrawingTUI {
 
 
   public Commande nextCommande(String s){
-    //String nomForme = s.substring(0,s.indexOf("=")).replace(" ","");
-    //String type = s.substring(s.indexOf("=")+1,s.indexOf("(")).replace(" ","");
     String type;
     if(s.contains("(")){
       type = s.substring(0,s.indexOf("(")).replace(" ","");

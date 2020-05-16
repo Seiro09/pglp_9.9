@@ -2,9 +2,11 @@ package fr.uvsq21504875;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CercleDAO extends DAO<Cercle>{
-  private DBConnection db = new DBConnection();
+  DBConnection db = new DBConnection();
 
   @Override
   public Cercle create(Cercle obj) {
@@ -52,6 +54,31 @@ public class CercleDAO extends DAO<Cercle>{
     db.disconnect();
 
     return c1;
+  }
+
+  @Override
+  public List<Cercle> findAll() {
+    db.connect();
+    List<Cercle> lc = new ArrayList<>();
+    try{
+      PreparedStatement ps = db.conn.prepareStatement(
+          "SELECT * FROM Cercles"
+      );
+      ResultSet result = ps.executeQuery();
+      while(result.next()){
+        lc.add(new Cercle(
+            result.getString("nom"),
+            result.getInt("CoordPx"),
+            result.getInt("CoordPy"),
+            result.getDouble("rayon")
+        ));
+      }
+      ps.close();
+    }catch(Exception e){
+      e.printStackTrace();
+    }
+    db.disconnect();
+    return lc;
   }
 
   @Override

@@ -47,4 +47,19 @@ public class DBConnection {
     }
     this.disconnect();
   }
+
+  public void dropTables(String s){
+    this.connect();
+    Statement st;
+    try {
+      st = this.conn.createStatement();
+      String sql = "DROP TABLE"
+          + s
+          + " IF NOT EXISTS ";
+      st.executeUpdate(sql);
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    this.disconnect();
+  }
 }

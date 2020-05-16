@@ -17,6 +17,9 @@ public class Interpreteur {
     set.put("Print", new CommandePrint(this));
     set.put("Undo", new CommandeUndo(this));
     set.put("Redo", new CommandeRedo(this));
+    set.put("Quit", new CommandeQuit(this));
+    set.put("Save", new CommandeSave(this));
+    set.put("Load",new CommandeLoad(this));
   }
 
   public void setParametersT(String[] parametersT) {
