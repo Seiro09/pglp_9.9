@@ -21,7 +21,9 @@ public class CommandeCercle implements Commande{
         int a = Integer.parseInt(inter.parametersT[1]);
         int b = Integer.parseInt(inter.parametersT[2]);
         double c = Double.parseDouble(inter.parametersT[3]);
-        inter.dessin.add(new Cercle(inter.parametersT[0],a,b,c));
+        Cercle c1 = new Cercle(inter.parametersT[0],a,b,c);
+        inter.dessin.add(c1);
+        c1.print();
       }catch(NumberFormatException e){
         e.printStackTrace();
       }

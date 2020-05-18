@@ -9,7 +9,8 @@ public class DrawingTUITest {
   public void nextCommande() throws Exception {
     DrawingTUI d = new DrawingTUI();
     Commande c = d.nextCommande("Cercle(c4,(50,50),64)");
-    assertNotEquals(c,null);
+    //assertNotEquals(c,null);
+    assertTrue(c instanceof CommandeCercle);
   }
 
   @Test

@@ -55,7 +55,7 @@ public class DBConnection {
       st = this.conn.createStatement();
       String sql = "DROP TABLE"
           + s
-          + " IF NOT EXISTS ";
+          + " IF EXISTS ";
       st.executeUpdate(sql);
     } catch (SQLException e) {
       e.printStackTrace();

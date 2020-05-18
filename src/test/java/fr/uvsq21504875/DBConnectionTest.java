@@ -9,6 +9,7 @@ public class DBConnectionTest {
   public void createTables() throws Exception {
     DBConnection db = new DBConnection();
     db.createTables("Cercles");
+    db.createTables("Triangles");
   }
 
   @Test

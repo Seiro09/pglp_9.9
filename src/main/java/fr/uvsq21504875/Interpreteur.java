@@ -13,7 +13,11 @@ public class Interpreteur {
 
   public Interpreteur(){
     set.put("Cercle",new CommandeCercle(this));
+    set.put("Triangle", new CommandeTriangle(this));
+    set.put("Carre", new CommandeCarre(this));
+    set.put("Rectangle", new CommandeRectangle(this));
     set.put("Move", new CommandeMove(this));
+    set.put("Groupe", new CommandeGroupe(this));
     set.put("Print", new CommandePrint(this));
     set.put("Undo", new CommandeUndo(this));
     set.put("Redo", new CommandeRedo(this));
