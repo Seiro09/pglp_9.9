@@ -8,8 +8,11 @@ public class DBConnectionTest {
   @Test
   public void createTables() throws Exception {
     DBConnection db = new DBConnection();
-    db.createTables("Cercles");
-    db.createTables("Triangles");
+    db.dropTables("Cercles");
+    db.dropTables("Carres");
+    db.dropTables("Rectangles");
+    db.dropTables("Triangles");
+    db.createTables();
   }
 
   @Test

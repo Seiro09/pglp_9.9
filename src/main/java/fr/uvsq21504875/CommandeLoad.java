@@ -21,6 +21,9 @@ public class CommandeLoad implements Commande {
     }while (!(reponseUtilisateur.equals("Oui"))||!(reponseUtilisateur.equals("Non")));
     if (reponseUtilisateur.equals("Oui")) {
       interpreteur.dessin.addAll(DAOFactory.getCercleDAO().findAll());
+      interpreteur.dessin.addAll(DAOFactory.getCarreDAO().findAll());
+      interpreteur.dessin.addAll(DAOFactory.getRectangleDAO().findAll());
+      interpreteur.dessin.addAll(DAOFactory.getTriangleDAO().findAll());
     }
     System.exit(12);
   }

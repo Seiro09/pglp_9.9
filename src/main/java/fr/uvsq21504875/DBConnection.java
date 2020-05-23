@@ -30,16 +30,45 @@ public class DBConnection {
     }
 
   }
-  public void createTables(String s){
+  public void createTables() {
     this.connect();
     Statement st;
     try {
       st = this.conn.createStatement();
       String sql = "CREATE TABLE IF NOT EXISTS "
-          + s + "(nom VARCHAR(255), "
+          + "Cercles"
+          + "(nom VARCHAR(255), "
           + "CoordPx INTEGER, "
           + "CoordPy INTEGER, "
           + "rayon DOUBLE, "
+          + "PRIMARY KEY (nom))";
+      st.executeUpdate(sql);
+      sql = "CREATE TABLE IF NOT EXISTS "
+          + "Carres"
+          + "(nom VARCHAR(255), "
+          + "HGx INTEGER, "
+          + "HGy INTEGER, "
+          + "cote INTEGER, "
+          + "PRIMARY KEY (nom))";
+      st.executeUpdate(sql);
+      sql = "CREATE TABLE IF NOT EXISTS "
+          + "Rectangles"
+          + "(nom VARCHAR(255), "
+          + "HGx INTEGER, "
+          + "HGy INTEGER, "
+          + "Longueur INTEGER, "
+          + "Largeur INTEGER, "
+          + "PRIMARY KEY (nom))";
+      st.executeUpdate(sql);
+      sql = "CREATE TABLE IF NOT EXISTS "
+          + "Triangles"
+          + "(nom VARCHAR(255), "
+          + "P1x INTEGER, "
+          + "P1y INTEGER, "
+          + "P2x INTEGER, "
+          + "P2y INTEGER, "
+          + "P3x INTEGER, "
+          + "P3y INTEGER, "
           + "PRIMARY KEY (nom))";
       st.executeUpdate(sql);
     } catch (SQLException e) {
@@ -53,7 +82,7 @@ public class DBConnection {
     Statement st;
     try {
       st = this.conn.createStatement();
-      String sql = "DROP TABLE"
+      String sql = "DROP TABLE "
           + s
           + " IF EXISTS ";
       st.executeUpdate(sql);

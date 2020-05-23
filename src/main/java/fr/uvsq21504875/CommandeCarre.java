@@ -25,7 +25,7 @@ public class CommandeCarre implements Commande {
         int c = Integer.parseInt(interpreteur.parametersT[3]);
         Carre c1 = new Carre(interpreteur.parametersT[0],a,b,c);
         interpreteur.dessin.add(c1);
-        c1.print();
+        //c1.print();
       }catch(NumberFormatException e){
         e.printStackTrace();
       }
