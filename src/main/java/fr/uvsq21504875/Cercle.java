@@ -2,7 +2,7 @@ package fr.uvsq21504875;
 
 public class Cercle implements Forme {
   /**
-   * Nom du Cercle
+   * Nom du Cercle.
    */
   private String nom;
   /**
@@ -56,17 +56,17 @@ public class Cercle implements Forme {
   }
 
   /**
-   * Fonction d'affichage du Triangle.
+   * Fonction d'affichage du Cercle.
    */
   public void print() {
-    AfficheForme a=new AfficheForme();
+    AfficheForme a = new AfficheForme();
     a.affiche(this.toString());
   }
 
   /**
    * Getter du Nom.
    *
-   * @return Le nom du Triangle.
+   * @return Le nom du Cercle.
    */
   public String getNom() {
     return nom;
@@ -75,7 +75,7 @@ public class Cercle implements Forme {
   /**
    * Getter du Centre.
    *
-   * @return Le centre du Triangle.
+   * @return Le centre du Cercle.
    */
   public Point getCentre() {
     return centre;
@@ -84,7 +84,7 @@ public class Cercle implements Forme {
   /**
    * Getter du rayon.
    *
-   * @return Le rayon du Triangle.
+   * @return Le rayon du Cercle.
    */
   public double getRayon() {
     return rayon;

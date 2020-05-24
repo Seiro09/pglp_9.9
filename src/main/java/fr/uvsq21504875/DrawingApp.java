@@ -26,10 +26,13 @@ public enum DrawingApp {
         }
     }
 
-    /**
-     * Fonction principale du code de l'application.
-     */
-    public static void main(String[] args) {
+
+  /**
+   * Fonction principale de l'application.
+   *
+   * @param args Les arguments entrés par l'utilisateur.
+   */
+    public static void main(final String[] args) {
         DRAWING_APP.run();
     }
 }

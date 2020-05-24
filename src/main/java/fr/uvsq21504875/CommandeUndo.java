@@ -12,7 +12,7 @@ public class CommandeUndo implements Commande {
    *
    * @param interpreteur Interpreteur.
    */
-  public CommandeUndo(Interpreteur interpreteur) {
+  public CommandeUndo(final Interpreteur interpreteur) {
     this.interpreteur = interpreteur;
   }
 

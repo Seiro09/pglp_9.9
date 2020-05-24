@@ -6,7 +6,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RectangleDAO extends DAO<Rectangle> {
-  private DBConnection db=new DBConnection();
+  /**
+   * Variable de connexion à la base de données.
+   */
+  private DBConnection db = new DBConnection();
+
+  /**
+   * Méthode de création d'un Rectangle dans la base de données.
+   *
+   * @param obj L'objet à créer dans la base de données.
+   * @return Le rectangle crée
+   */
   @Override
   public Rectangle create(final Rectangle obj) {
     db.connect();
@@ -30,6 +40,12 @@ public class RectangleDAO extends DAO<Rectangle> {
     return obj;
   }
 
+  /**
+   * Méthode de recherche d'un Rectangle.
+   *
+   * @param id Le paramètre d'identification de l'objet.
+   * @return Le Rectangle trouvé (ou null).
+   */
   @Override
   public Rectangle find(final String id) {
     db.connect();
@@ -40,7 +56,7 @@ public class RectangleDAO extends DAO<Rectangle> {
       );
       ps.setString(1, id);
       ResultSet result = ps.executeQuery();
-      if(result.first()) {
+      if (result.first()) {
         r1 = new Rectangle(
             result.getString("nom"),
             result.getInt("Px"),
@@ -57,6 +73,11 @@ public class RectangleDAO extends DAO<Rectangle> {
     return r1;
   }
 
+  /**
+   * Fonction de récupération du contenu de la Table Rectangle.
+   *
+   * @return Les rectangles sauvegardés.
+   */
   @Override
   public List<Rectangle> findAll() {
     db.connect();
@@ -66,7 +87,7 @@ public class RectangleDAO extends DAO<Rectangle> {
           "SELECT * FROM Rectangles"
       );
       ResultSet result = ps.executeQuery();
-      while(result.next()) {
+      while (result.next()) {
         lc.add(new Rectangle(
             result.getString("nom"),
             result.getInt("Px"),
@@ -83,6 +104,12 @@ public class RectangleDAO extends DAO<Rectangle> {
     return lc;
   }
 
+  /**
+   * Méthode de mise à jour d'un objet de la Table.
+   *
+   * @param obj L"objet à mettre à jour.
+   * @return L'objet modifié.
+   */
   @Override
   public Rectangle update(final Rectangle obj) {
     db.connect();
@@ -90,9 +117,9 @@ public class RectangleDAO extends DAO<Rectangle> {
       PreparedStatement ps = db.getConn().prepareStatement(
           "UPDATE Rectangles SET Px = ?, Py = ? WHERE nom = ?"
       );
-      ps.setInt(1,obj.getHG().getX());
-      ps.setInt(2,obj.getHG().getY());
-      ps.setString(3,obj.getNom());
+      ps.setInt(1, obj.getHG().getX());
+      ps.setInt(2, obj.getHG().getY());
+      ps.setString(3, obj.getNom());
       int result = ps.executeUpdate();
       assert result == 1;
       ps.close();
@@ -103,6 +130,11 @@ public class RectangleDAO extends DAO<Rectangle> {
     return obj;
   }
 
+  /**
+   * Méthode de suppression de la Table.
+   *
+   * @param obj L"objet à supprimer.
+   */
   @Override
   public void delete(final Rectangle obj) {
     db.connect();

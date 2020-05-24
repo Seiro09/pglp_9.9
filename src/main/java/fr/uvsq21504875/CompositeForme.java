@@ -36,7 +36,9 @@ public class CompositeForme implements Forme {
    *
    * @param f La forme à supprimer.
    */
-  public void remove(final Forme f) { children.remove(f); }
+  public void remove(final Forme f) {
+    children.remove(f);
+  }
 
   /**
    * Méthode de déplacement des formes du Groupe.
@@ -74,7 +76,7 @@ public class CompositeForme implements Forme {
    *
    * @param nom Le nom souhaité.
    */
-  public void setNom(String nom) {
+  public void setNom(final String nom) {
     this.nom = nom;
   }
 }
