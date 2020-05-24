@@ -1,18 +1,37 @@
 package fr.uvsq21504875;
 
-import org.h2.jdbcx.JdbcDataSource;
-
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class DBConnection {
+  /**
+   * URL de la base de données.
+   */
   private static final String DB_URL = "jdbc:h2:./Database/Dessin";
+  /**
+   * Classe utilisée pour la base de données.
+   */
   private static final String JDBC_DRIVER = "org.h2.Driver";
 
+  /**
+   * Username de la base de données.
+   */
   private static final String USER = "sa";
+  /**
+   * Mot de passe de la base de données.
+   */
   private static final String PASS = "";
 
-  protected Connection conn = null;
+  /**
+   * Classe de connexion.
+   */
+  private Connection conn = null;
 
+  /**
+   * Fonction de connexion.
+   */
   public void connect() {
 
     try {
@@ -22,7 +41,11 @@ public class DBConnection {
       e.printStackTrace();
     }
   }
-  public void disconnect(){
+
+  /**
+   * Fonction de déconnexion.
+   */
+  public void disconnect() {
     try {
       conn.close();
     } catch (SQLException e) {
@@ -30,11 +53,15 @@ public class DBConnection {
     }
 
   }
+
+  /**
+   * Fonction de création des tables de la base de données.
+   */
   public void createTables() {
     this.connect();
     Statement st;
     try {
-      st = this.conn.createStatement();
+      st = this.getConn().createStatement();
       String sql = "CREATE TABLE IF NOT EXISTS "
           + "Cercles"
           + "(nom VARCHAR(255), "
@@ -77,11 +104,16 @@ public class DBConnection {
     this.disconnect();
   }
 
-  public void dropTables(String s){
+  /**
+   * Fonction de suppression de tables.
+   *
+   * @param s Le nom de la base de données à supprimer.
+   */
+  public void dropTables(final String s) {
     this.connect();
     Statement st;
     try {
-      st = this.conn.createStatement();
+      st = this.getConn().createStatement();
       String sql = "DROP TABLE "
           + s
           + " IF EXISTS ";
@@ -90,5 +122,14 @@ public class DBConnection {
       e.printStackTrace();
     }
     this.disconnect();
+  }
+
+  /**
+   * Getter de la variable de connexion.
+   *
+   * @return La variable de connexion.
+   */
+  public Connection getConn() {
+    return conn;
   }
 }

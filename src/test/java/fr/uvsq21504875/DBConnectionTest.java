@@ -9,7 +9,7 @@ public class DBConnectionTest {
   public void createTables() throws Exception {
     DBConnection db = new DBConnection();
     db.dropTables("Cercles");
-    db.dropTables("Carres");
+    db.dropTables("Carres ");
     db.dropTables("Rectangles");
     db.dropTables("Triangles");
     db.createTables();

@@ -6,23 +6,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RectangleDAO extends DAO<Rectangle> {
-  DBConnection db=new DBConnection();
+  private DBConnection db=new DBConnection();
   @Override
-  public Rectangle create(Rectangle obj) {
+  public Rectangle create(final Rectangle obj) {
     db.connect();
-    try{
-      PreparedStatement ps = db.conn.prepareStatement(
-          "INSERT INTO Rectangles(nom, Px, Py, longueur, largeur) VALUES (?, ?, ?, ?, ?) "
+    try {
+      PreparedStatement ps = db.getConn().prepareStatement(
+          "INSERT INTO Rectangles(nom, Px, Py, longueur, largeur)"
+              + " VALUES (?, ?, ?, ?, ?) "
       );
-      ps.setString(1,obj.getNom());
-      ps.setInt(2,obj.getHG().getX());
-      ps.setInt(3,obj.getHG().getY());
-      ps.setInt(4,obj.getLongueur());
-      ps.setInt(5,obj.getLargeur());
+      ps.setString(1, obj.getNom());
+      ps.setInt(2, obj.getHG().getX());
+      ps.setInt(3, obj.getHG().getY());
+      ps.setInt(4, obj.getLongueur());
+      ps.setInt(5, obj.getLargeur());
       int result = ps.executeUpdate();
       assert result == 1;
       ps.close();
-    }catch(Exception e){
+    } catch (Exception e) {
       e.printStackTrace();
     }
     db.disconnect();
@@ -30,16 +31,16 @@ public class RectangleDAO extends DAO<Rectangle> {
   }
 
   @Override
-  public Rectangle find(String id) {
+  public Rectangle find(final String id) {
     db.connect();
     Rectangle r1 = null;
-    try{
-      PreparedStatement ps = db.conn.prepareStatement(
+    try {
+      PreparedStatement ps = db.getConn().prepareStatement(
           "SELECT * FROM Rectangles WHERE nom = ?"
       );
-      ps.setString(1,id);
+      ps.setString(1, id);
       ResultSet result = ps.executeQuery();
-      if(result.first()){
+      if(result.first()) {
         r1 = new Rectangle(
             result.getString("nom"),
             result.getInt("Px"),
@@ -49,11 +50,10 @@ public class RectangleDAO extends DAO<Rectangle> {
         );
       }
       ps.close();
-    }catch(Exception e){
-      e.printStackTrace();
+    } catch (Exception e) {
+        e.printStackTrace();
     }
     db.disconnect();
-
     return r1;
   }
 
@@ -61,12 +61,12 @@ public class RectangleDAO extends DAO<Rectangle> {
   public List<Rectangle> findAll() {
     db.connect();
     List<Rectangle> lc = new ArrayList<>();
-    try{
-      PreparedStatement ps = db.conn.prepareStatement(
+    try {
+      PreparedStatement ps = db.getConn().prepareStatement(
           "SELECT * FROM Rectangles"
       );
       ResultSet result = ps.executeQuery();
-      while(result.next()){
+      while(result.next()) {
         lc.add(new Rectangle(
             result.getString("nom"),
             result.getInt("Px"),
@@ -76,18 +76,18 @@ public class RectangleDAO extends DAO<Rectangle> {
         ));
       }
       ps.close();
-    }catch(Exception e){
-      e.printStackTrace();
+    } catch (Exception e) {
+        e.printStackTrace();
     }
     db.disconnect();
     return lc;
   }
 
   @Override
-  public Rectangle update(Rectangle obj) {
+  public Rectangle update(final Rectangle obj) {
     db.connect();
-    try{
-      PreparedStatement ps = db.conn.prepareStatement(
+    try {
+      PreparedStatement ps = db.getConn().prepareStatement(
           "UPDATE Rectangles SET Px = ?, Py = ? WHERE nom = ?"
       );
       ps.setInt(1,obj.getHG().getX());
@@ -96,7 +96,7 @@ public class RectangleDAO extends DAO<Rectangle> {
       int result = ps.executeUpdate();
       assert result == 1;
       ps.close();
-    }catch(Exception e){
+    } catch (Exception e) {
       e.printStackTrace();
     }
     db.disconnect();
@@ -104,17 +104,17 @@ public class RectangleDAO extends DAO<Rectangle> {
   }
 
   @Override
-  public void delete(Rectangle obj) {
+  public void delete(final Rectangle obj) {
     db.connect();
-    try{
-      PreparedStatement ps = db.conn.prepareStatement(
+    try {
+      PreparedStatement ps = db.getConn().prepareStatement(
           "DELETE FROM Rectangles WHERE nom = ?"
       );
-      ps.setString(1,obj.getNom());
+      ps.setString(1, obj.getNom());
       int result = ps.executeUpdate();
       assert result == 1;
       ps.close();
-    }catch(Exception e){
+    } catch (Exception e) {
       e.printStackTrace();
     }
     db.disconnect();
